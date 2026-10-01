@@ -1,0 +1,6 @@
+{
+  "name": "GYEOLUME | 결루메",
+  "description": "피부 본연의 호흡과 은은한 결광을 제안하는 프리미엄 미니멀 뷰티 브랜드 결루메(Gyeolume) 공식 온라인 스토어",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
