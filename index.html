@@ -22,13 +22,13 @@
       theme: {
         extend: {
           colors: {
-            'bg-warm': '#FAFAFA',
-            'slate-dark': '#1F2937',
-            'border-subtle': '#E5E7EB',
-            'rose-soft': '#FCA5A5',
-            'clay-beige': '#E8DDD3',
-            'clay-light': '#F4EFEA',
-            'sand-light': '#F7F4F0'
+            'bg-warm': '#FDFBF9',
+            'slate-dark': '#18181b',
+            'border-subtle': '#E5E5E5',
+            'rose-soft': '#D99B88',
+            'clay-beige': '#E4D5C7',
+            'clay-light': '#F5EFEB',
+            'sand-light': '#F9F7F5'
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', '"Noto Serif KR"', 'serif'],
@@ -36,6 +36,10 @@
           },
           aspectRatio: {
             '4/5': '4 / 5'
+          },
+          boxShadow: {
+            'premium': '0 10px 40px -10px rgba(0,0,0,0.08)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
           }
         }
       }
@@ -60,13 +64,33 @@
     /* Scroll fade-up classes */
     .fade-up-init {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
       will-change: opacity, transform;
     }
     .fade-up-active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+    }
+    
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-animate {
+      animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      opacity: 0;
+    }
+    .hero-delay-1 { animation-delay: 0.2s; }
+    .hero-delay-2 { animation-delay: 0.4s; }
+    .hero-delay-3 { animation-delay: 0.6s; }
+    
+    /* Image hover zoom effect */
+    .img-zoom-hover {
+      transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .group:hover .img-zoom-hover {
+      transform: scale(1.05);
     }
 
     /* Fallback UI for failed image loads */
@@ -95,19 +119,19 @@
   </aside>
 
   <!-- 2. Header -->
-  <header id="site-header" class="sticky top-0 z-40 w-full transition-all duration-300 bg-[#FAFAFA]/80 backdrop-blur-sm border-b border-border-subtle">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+  <header id="site-header" class="sticky top-0 z-40 w-full transition-all duration-500 bg-bg-warm/70 backdrop-blur-md border-b border-border-subtle shadow-glass">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 md:h-24 flex items-center justify-between">
       <!-- Left Navigation -->
-      <nav class="flex items-center space-x-8 text-xs tracking-[0.18em] uppercase font-light">
-        <a href="#shop" class="hover:text-rose-soft transition-colors duration-200">Shop</a>
-        <a href="#story" class="hover:text-rose-soft transition-colors duration-200">Story</a>
-        <a href="#lookbook" class="hover:text-rose-soft transition-colors duration-200">Journal</a>
+      <nav class="flex items-center space-x-8 text-[11px] md:text-xs tracking-[0.2em] uppercase font-light">
+        <a href="#shop" class="hover:text-rose-soft transition-colors duration-300">Shop</a>
+        <a href="#story" class="hover:text-rose-soft transition-colors duration-300">Story</a>
+        <a href="#lookbook" class="hover:text-rose-soft transition-colors duration-300">Journal</a>
       </nav>
 
       <!-- Center Logo -->
       <div class="flex items-center justify-center">
         <a href="#" class="inline-block py-2 focus:outline-none" aria-label="GYEOLUME Home">
-          <img src="https://lh3.googleusercontent.com/aida/AEtjO1XzAp17k6vJjg7UJCMIYcOm-UQ_-1T7HNdct71gabF5kvpGSNH469NuQRgUNMBMwVbh6lnhIzzsjqf0Vz33SWKFzuFuPGWE8jo7iqbhJe5QEb2MuKZqsWWUxghmb68yqynyK04xhzJilhGGezLfsSgUjzGLWHcVImJFl5EoEVKUmwfzJnXdLa8c8nlaeZcC6mwiTtSzpqgZxK-4yTGIpOv5eOsp93xvma6SKFcfFjT852S3ptp1VkK7zZc" alt="GYEOLUME" class="h-8 lg:h-9 w-auto object-contain">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1XzAp17k6vJjg7UJCMIYcOm-UQ_-1T7HNdct71gabF5kvpGSNH469NuQRgUNMBMwVbh6lnhIzzsjqf0Vz33SWKFzuFuPGWE8jo7iqbhJe5QEb2MuKZqsWWUxghmb68yqynyK04xhzJilhGGezLfsSgUjzGLWHcVImJFl5EoEVKUmwfzJnXdLa8c8nlaeZcC6mwiTtSzpqgZxK-4yTGIpOv5eOsp93xvma6SKFcfFjT852S3ptp1VkK7zZc" alt="GYEOLUME" class="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform duration-500 hover:scale-105">
         </a>
       </div>
 
@@ -137,47 +161,118 @@
     <section id="hero" class="relative w-full min-h-[calc(100vh-106px)] flex items-center justify-center overflow-hidden border-b border-border-subtle bg-neutral-900">
       <!-- Fullscreen Background Mood Image -->
       <div class="absolute inset-0 z-0">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcZgjJYLHPAiX4aIouS8YWXVd2Xk1acCuYcyU5dTOS7I-G-dGDYmI_PCCQQznTT1quu_jvvtGh0o6yHEYIZbAsYV5YsSxO8FREm71yjYOiADdze6KrdWXjtjtXQkpRW8HkEgxsHDl_QRX4ndlh1wJHoGcyH0bV6hee_TXJjJkqwqdpsfXxin5U_VdIjdMVUnE3rg6yaLvvEnZSAaNI7vZ_dcEFKg_UU1dgMoWnPy_pTre5rMfSu0P_" alt="Gyeolume Hydrated Glowing Skin" class="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.03]">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#1F2937]/50 via-transparent to-[#1F2937]/20"></div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcZgjJYLHPAiX4aIouS8YWXVd2Xk1acCuYcyU5dTOS7I-G-dGDYmI_PCCQQznTT1quu_jvvtGh0o6yHEYIZbAsYV5YsSxO8FREm71yjYOiADdze6KrdWXjtjtXQkpRW8HkEgxsHDl_QRX4ndlh1wJHoGcyH0bV6hee_TXJjJkqwqdpsfXxin5U_VdIjdMVUnE3rg6yaLvvEnZSAaNI7vZ_dcEFKg_UU1dgMoWnPy_pTre5rMfSu0P_" alt="Gyeolume Hydrated Glowing Skin" class="w-full h-full object-cover object-center filter brightness-[0.90] contrast-[1.05]">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-[#1A1A1A]/30"></div>
       </div>
 
       <!-- Hero Typography & CTA -->
       <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white py-20 flex flex-col items-center">
-        <p class="text-xs md:text-sm tracking-[0.35em] uppercase font-light text-white/90 mb-4">
+        <p class="text-[10px] md:text-xs tracking-[0.4em] uppercase font-light text-white/90 mb-6 hero-animate">
           The Art of Natural Korean Radiance
         </p>
-        <h1 class="font-serif-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide leading-[1.1] mb-6">
+        <h1 class="font-serif-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide leading-[1.15] mb-8 hero-animate hero-delay-1 drop-shadow-lg">
           결을 살리고,<br class="hidden sm:inline"> 빛을 더하다.
         </h1>
-        <p class="font-light text-sm sm:text-base md:text-lg text-white/80 max-w-xl mx-auto mb-10 tracking-[0.05em] leading-relaxed">
+        <p class="font-light text-sm sm:text-base md:text-lg text-white/80 max-w-xl mx-auto mb-12 tracking-[0.05em] leading-relaxed hero-animate hero-delay-2">
           피부 본연의 건강한 결을 가장 앞자리에 두고,<br class="sm:hidden"> 그 위에 맑고 은은한 빛만을 얹습니다.
         </p>
-        <a href="#shop" class="inline-flex items-center justify-center px-10 py-4 bg-white/95 text-slate-dark text-xs font-normal tracking-[0.25em] uppercase transition-all duration-300 hover:bg-white hover:shadow-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-rose-soft">
-          Shop the Collection
-        </a>
+        <div class="hero-animate hero-delay-3">
+          <a href="#shop" class="inline-flex items-center justify-center px-14 py-4 bg-white/95 backdrop-blur-md text-slate-dark text-[11px] font-medium tracking-[0.3em] uppercase transition-all duration-500 hover:bg-white hover:scale-105 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white focus:outline-none rounded-none">
+            Shop the Collection
+          </a>
+        </div>
       </div>
 
       <!-- Subtle bottom scroll hint -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/60 text-[10px] tracking-[0.3em] uppercase flex flex-col items-center gap-2 pointer-events-none">
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/60 text-[10px] tracking-[0.3em] uppercase flex flex-col items-center gap-2 pointer-events-none hero-animate hero-delay-3">
         <span>Scroll</span>
         <div class="w-px h-8 bg-white/30"></div>
       </div>
     </section>
 
-    <!-- 4. Philosophy Section -->
-    <section id="story" class="py-28 md:py-36 px-6 lg:px-12 bg-bg-warm border-b border-border-subtle fade-up-init">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="text-[11px] font-medium tracking-[0.3em] uppercase text-rose-soft block mb-6">Philosophy</span>
-        <h2 class="font-serif-title text-3xl sm:text-4xl md:text-5xl font-light leading-snug mb-10 text-slate-dark">
-          "피부 본연의 호흡을 가리지 않는 것,<br>진정한 맑음은 결에서 시작됩니다."
-        </h2>
-        <div class="w-12 h-px bg-slate-dark/30 mx-auto mb-10"></div>
-        <p class="text-sm md:text-base font-light text-slate-dark/75 leading-relaxed tracking-wide max-w-2xl mx-auto">
-          결루메(Gyeolume)는 피부 본래의 맑고 섬세한 텍스처를 존중합니다.
-          두껍게 덮어 가리는 인위적인 화려함 대신, 고요한 수분감으로 결을 정돈하는 스킨케어와
-          빛의 각도에 따라 잔잔한 윤슬을 피워내는 미니멀 메이크업을 지향합니다.
+    <!-- 4. Brand Story Narrative -->
+    <section id="story" class="w-full bg-white flex flex-col border-b border-border-subtle">
+      
+      <!-- Story 1: Diversity & Natural Texture Hero -->
+      <div class="relative w-full min-h-[90vh] bg-neutral-50 flex flex-col lg:flex-row border-b border-border-subtle overflow-hidden">
+        
+        <!-- Text Content -->
+        <div class="w-full lg:w-2/5 flex flex-col justify-center px-8 py-24 lg:py-0 lg:pl-16 xl:pl-24 z-10 bg-neutral-50 border-b lg:border-b-0 lg:border-r border-border-subtle relative">
+          <span class="text-[10px] tracking-[0.4em] uppercase text-slate-dark/50 block mb-6">The Origin</span>
+          <h2 class="font-serif-title text-5xl md:text-6xl font-normal text-slate-dark leading-tight mb-8">
+            있는 그대로의 결.
+          </h2>
+          <div class="w-12 h-px bg-slate-dark/20 mb-8"></div>
+          <p class="text-sm md:text-base font-light text-slate-dark/80 leading-relaxed max-w-sm">
+            인위적으로 가리지 않습니다. 우리는 피부 본연이 가진 질감과 그 고유의 아름다움에 집중합니다. GYEOLUME는 당신이 가진 가장 맑고 순수한 빛을 끌어올려, 있는 그대로의 자연스러운 결을 완성합니다.
+          </p>
+        </div>
+
+        <!-- Image Collage (Editorial Grid) -->
+        <div class="w-full lg:w-3/5 bg-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+          <!-- Asian Model -->
+          <div class="w-full h-[60vh] lg:h-full relative overflow-hidden group">
+            <img src="/images/model_asian.jpg" alt="Asian model showing natural skin texture" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+          </div>
+          <!-- Black Model -->
+          <div class="w-full h-[60vh] lg:h-full relative overflow-hidden group border-t sm:border-t-0 sm:border-l border-border-subtle">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80" alt="Black model showing natural skin texture" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 object-top">
+          </div>
+          <!-- Caucasian Model -->
+          <div class="w-full h-[60vh] lg:h-full relative overflow-hidden group border-t md:border-t-0 md:border-l border-border-subtle sm:col-span-2 md:col-span-1">
+            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=800&q=80" alt="Caucasian model with freckles showing natural skin texture" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Story 2: The Manifesto -->
+      <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center fade-up-init">
+        <h3 class="font-serif-title text-2xl md:text-4xl text-slate-dark leading-snug mb-10">
+          "두껍게 덮어 가리는 인위적인 화려함 대신,<br>피부 본연의 호흡을 존중합니다."
+        </h3>
+        <div class="w-10 h-px bg-slate-dark/20 mx-auto mb-10"></div>
+        <p class="text-sm md:text-base font-light text-slate-dark/80 leading-relaxed tracking-wide">
+          GYEOLUME(결루메)는 한국의 미학인 '결(Texture)'과 라틴어 'Lume(Light)'의 합성어로,<br class="hidden md:block">
+          고요한 수분감으로 피부 결을 섬세하게 정돈하고, 빛의 각도에 따라 잔잔한 윤슬을 피워내는 프리미엄 뷰티 브랜드입니다.
         </p>
       </div>
+
+      <!-- Story 3: Heritage & Quiet Luxury -->
+      <div class="w-full bg-clay-light py-24 md:py-32 px-6 lg:px-12">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center fade-up-init">
+          <div class="order-2 md:order-1 flex flex-col justify-center">
+            <span class="text-[10px] tracking-[0.3em] uppercase text-slate-dark/50 block mb-6">Quiet Luxury</span>
+            <h3 class="font-serif-title text-3xl md:text-4xl font-normal text-slate-dark mb-8 leading-snug">
+              시간이 빚어낸 달항아리처럼,<br>꾸밈없는 단아한 빛
+            </h3>
+            <p class="text-sm md:text-base font-light text-slate-dark/80 leading-relaxed mb-8">
+              가장 한국적인 절제미에서 영감을 받았습니다. 여백의 미를 간직한 달항아리처럼, GYEOLUME의 뷰티 리추얼은 불필요한 단계를 덜어내고 오직 피부가 필요로 하는 가장 순수한 에너지에만 집중합니다.
+            </p>
+            <p class="text-sm font-medium text-slate-dark tracking-widest uppercase">Embrace Your Natural Grace</p>
+          </div>
+          <div class="order-1 md:order-2 w-full aspect-[4/5] overflow-hidden shadow-sm">
+            <img src="/images/brand_story_heritage.jpg" alt="Heritage" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 4: Pure Ingredients -->
+      <div class="max-w-6xl mx-auto px-6 lg:px-12 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center fade-up-init">
+        <div class="w-full aspect-square overflow-hidden shadow-sm">
+          <img src="/images/brand_story_nature.jpg" alt="Nature and Ingredients" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-[10px] tracking-[0.3em] uppercase text-slate-dark/50 block mb-6">Pure Elements</span>
+          <h3 class="font-serif-title text-3xl md:text-4xl font-normal text-slate-dark mb-8 leading-snug">
+            이슬을 머금은 백련꽃,<br>자연이 선사하는 투명함
+          </h3>
+          <p class="text-sm md:text-base font-light text-slate-dark/80 leading-relaxed">
+            순수한 흙과 바람 속에서 자란 식물성 원료만을 고집합니다. 72시간 저온 발효를 거친 백련꽃 추출물과 하동 녹차수의 청정한 수분 에너지가 무너진 피부 장벽을 회복시키고, 투명한 생기를 되찾아 줍니다. 비건 인증 포뮬러로 피부와 자연 모두에게 편안함을 약속합니다.
+          </p>
+        </div>
+      </div>
+      
     </section>
 
     <!-- 5. Two Lines Section (Skin vs Glow Split Panels) -->
@@ -323,42 +418,44 @@
       <!-- Asymmetric 3-image Lookbook Grid -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-stretch">
         <!-- Item 1 (Wide 7 cols) -->
-        <div class="md:col-span-7 bg-clay-light border border-border-subtle overflow-hidden relative min-h-[360px] flex items-center justify-center p-8 group">
-          <div class="absolute inset-0 bg-[#E8DED4] flex items-center justify-center">
-            <div class="text-center p-8">
-              <span class="text-xs tracking-[0.3em] font-light uppercase text-slate-dark/60 block mb-2">Look 01</span>
-              <p class="font-serif-title text-2xl sm:text-3xl font-light text-slate-dark">Morning Radiance Ritual</p>
-            </div>
+        <div class="md:col-span-7 border border-border-subtle overflow-hidden relative min-h-[400px] flex items-center justify-center group">
+          <img src="/images/journal1.jpg" alt="Look 01" class="absolute inset-0 w-full h-full object-cover img-zoom-hover">
+          <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-500"></div>
+          <div class="relative z-10 text-center p-8 text-white">
+            <span class="text-xs tracking-[0.3em] font-light uppercase text-white/80 block mb-2">Look 01</span>
+            <p class="font-serif-title text-2xl sm:text-3xl font-light drop-shadow-sm">Morning Radiance Ritual</p>
           </div>
-          <div class="absolute bottom-6 left-6 z-10 text-[11px] tracking-widest uppercase font-light text-slate-dark/70">
+          <div class="absolute bottom-6 left-6 z-10 text-[11px] tracking-widest uppercase font-light text-white/70">
             SEOUL STUDIO &middot; SS CAMPAIGN
           </div>
         </div>
 
         <!-- Item 2 (5 cols) -->
-        <div class="md:col-span-5 bg-clay-beige border border-border-subtle overflow-hidden relative min-h-[360px] flex items-center justify-center p-8 group">
-          <div class="absolute inset-0 bg-[#E0D1C1] flex items-center justify-center">
-            <div class="text-center p-8">
-              <span class="text-xs tracking-[0.3em] font-light uppercase text-slate-dark/60 block mb-2">Look 02</span>
-              <p class="font-serif-title text-2xl sm:text-3xl font-light text-slate-dark">Bare Lip &amp; Cheek</p>
-            </div>
+        <div class="md:col-span-5 border border-border-subtle overflow-hidden relative min-h-[400px] flex items-center justify-center group">
+          <img src="/images/journal2.jpg" alt="Look 02" class="absolute inset-0 w-full h-full object-cover img-zoom-hover">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500"></div>
+          <div class="relative z-10 text-center p-8 text-white">
+            <span class="text-xs tracking-[0.3em] font-light uppercase text-white/80 block mb-2">Look 02</span>
+            <p class="font-serif-title text-2xl sm:text-3xl font-light drop-shadow-sm">Bare Lip &amp; Cheek</p>
           </div>
-          <div class="absolute bottom-6 left-6 z-10 text-[11px] tracking-widest uppercase font-light text-slate-dark/70">
+          <div class="absolute bottom-6 left-6 z-10 text-[11px] tracking-widest uppercase font-light text-white/70">
             NATURAL LIGHT STUDY
           </div>
         </div>
 
         <!-- Item 3 (Full 12 cols, landscape mood banner) -->
-        <div class="md:col-span-12 bg-neutral-100 border border-border-subtle overflow-hidden relative min-h-[260px] flex items-center justify-between p-8 sm:p-14">
-          <div class="relative z-10 max-w-xl">
-            <span class="text-xs tracking-[0.3em] font-light uppercase text-slate-dark/60 block mb-2">Look 03 &middot; Still Life</span>
-            <h3 class="font-serif-title text-3xl sm:text-4xl font-light text-slate-dark mb-4">Objects of Quiet Luxury</h3>
-            <p class="text-xs sm:text-sm font-light text-slate-dark/75 leading-relaxed">
+        <div class="md:col-span-12 border border-border-subtle overflow-hidden relative min-h-[300px] flex items-center justify-between p-8 sm:p-14 group">
+          <img src="/images/journal3.jpg" alt="Look 03" class="absolute inset-0 w-full h-full object-cover img-zoom-hover">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500"></div>
+          <div class="relative z-10 max-w-xl text-white">
+            <span class="text-xs tracking-[0.3em] font-light uppercase text-white/80 block mb-2">Look 03 &middot; Still Life</span>
+            <h3 class="font-serif-title text-3xl sm:text-4xl font-light mb-4 drop-shadow-sm">Objects of Quiet Luxury</h3>
+            <p class="text-xs sm:text-sm font-light text-white/90 leading-relaxed">
               화장대 위에 머무는 순간조차 평온하도록, 미니멀한 실루엣과 차분한 촉감의 패키지를 설계했습니다.
             </p>
           </div>
-          <div class="hidden sm:block">
-            <a href="#shop" class="px-6 py-3 border border-slate-dark text-xs tracking-[0.2em] uppercase font-light text-slate-dark hover:bg-slate-dark hover:text-white transition-all">
+          <div class="hidden sm:block relative z-10">
+            <a href="#shop" class="px-6 py-3 border border-white text-xs tracking-[0.2em] uppercase font-light text-white hover:bg-white hover:text-slate-dark transition-all duration-300">
               View Catalogue
             </a>
           </div>
@@ -412,8 +509,8 @@
   <footer class="bg-bg-warm border-t border-border-subtle pt-16 pb-12 px-6 lg:px-12 text-slate-dark">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 pb-16 border-b border-border-subtle">
       <!-- Col 1: Brand Info -->
-      <div class="md:col-span-2 space-y-4">
-        <h3 class="font-serif-title text-2xl tracking-wider font-light">GYEOLUME</h3>
+      <div class="md:col-span-2 space-y-6">
+        <h3 class="font-serif-title text-3xl md:text-4xl tracking-[0.15em] font-light">GYEOLUME</h3>
         <p class="text-xs font-light text-slate-dark/70 leading-relaxed max-w-sm">
           결을 살리고, 빛을 더하다.<br>
           자연스러운 호흡과 은은한 결광을 제안하는 서울 기반의 프리미엄 뷰티 브랜드입니다.
@@ -469,58 +566,143 @@
   <!-- ========================================== -->
   <!-- MODAL: Product Detail Modal (#product-modal) -->
   <!-- ========================================== -->
-  <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/40 backdrop-blur-sm hidden" aria-modal="true" role="dialog" aria-labelledby="modal-title">
-    <div class="relative w-full max-w-3xl bg-white border border-border-subtle shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
-      <!-- Close Button -->
-      <button type="button" id="modal-close" class="absolute top-4 right-4 z-20 p-2 text-slate-dark/70 hover:text-slate-dark focus:outline-none focus-visible:ring-1 focus-visible:ring-rose-soft" aria-label="Close modal">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-
-      <!-- Left Image Column with skeleton & fallback -->
-      <div class="w-full md:w-1/2 aspect-4/5 md:aspect-auto bg-clay-light flex items-center justify-center border-b md:border-b-0 md:border-r border-border-subtle relative overflow-hidden min-h-[300px]">
-        <div id="modal-img-container" class="w-full h-full flex items-center justify-center bg-neutral-200 animate-pulse">
+  <div id="product-modal" class="fixed inset-0 z-50 bg-white hidden overflow-y-auto" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <!-- Close Button -->
+    <button type="button" id="modal-close" class="fixed top-6 right-6 z-[60] p-3 bg-white rounded-full text-slate-dark/80 hover:bg-neutral-100 shadow-sm border border-border-subtle focus:outline-none transition-all">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    
+    <!-- Top Hero Section (1-Column Centered) -->
+    <div class="max-w-3xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center text-center bg-white">
+      <!-- Product Image -->
+      <div class="w-full max-w-xl aspect-square bg-white flex items-center justify-center relative overflow-hidden border border-border-subtle mb-10">
+        <div id="modal-img-container" class="w-full h-full flex items-center justify-center">
           <img id="modal-img" src="" alt="Product Detail Preview" class="w-full h-full object-cover transition-opacity duration-500 opacity-0">
         </div>
       </div>
 
-      <!-- Right Detail Column -->
-      <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
-        <div>
-          <span id="modal-category" class="text-[10px] tracking-[0.25em] uppercase text-rose-soft block mb-2">Category</span>
-          <h3 id="modal-title" class="font-serif-title text-2xl sm:text-3xl font-light text-slate-dark mb-2">Product Name</h3>
-          <p id="modal-price" class="text-base font-normal text-slate-dark mb-4">₩0</p>
-          <p id="modal-desc" class="text-xs font-light text-slate-dark/75 leading-relaxed mb-6">
-            피부 본연의 결을 맑고 깨끗하게 가꾸어주는 프리미엄 포뮬러 제품 설명입니다.
-          </p>
+      <!-- Product Info -->
+      <span id="modal-category" class="text-[11px] tracking-[0.25em] uppercase text-slate-dark/50 block mb-3">Category</span>
+      <h3 id="modal-title" class="font-serif-title text-3xl md:text-4xl font-normal text-slate-dark mb-4 leading-snug">Product Name</h3>
+      <p id="modal-price" class="text-xl font-medium text-slate-dark mb-6">₩0</p>
+      
+      <p id="modal-desc" class="text-sm md:text-base font-light text-slate-dark/80 leading-relaxed max-w-lg mb-10">
+        피부 본연의 결을 맑고 깨끗하게 가꾸어주는 프리미엄 포뮬러 제품 설명입니다.
+      </p>
 
-          <!-- Swatch / Shades area -->
-          <div id="modal-shades" class="mb-6 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[11px] font-light text-slate-dark/60 tracking-wider">Shades</span>
-              <span id="modal-selected-shade-name" class="text-[11px] font-normal text-slate-dark"></span>
-            </div>
-            <div id="modal-shades-container" class="flex items-center space-x-2 pt-1">
-              <!-- Swatches generated dynamically -->
-            </div>
-          </div>
+      <div class="w-12 h-px bg-slate-dark/20 mb-10"></div>
 
-          <!-- Quantity Selector -->
-          <div class="flex items-center space-x-3 mb-6">
-            <span class="text-[11px] font-light text-slate-dark/60 tracking-wider">Quantity</span>
-            <div class="flex items-center border border-border-subtle">
-              <button type="button" id="modal-qty-minus" aria-label="Decrease quantity" class="px-3 py-1 text-xs text-slate-dark hover:bg-neutral-100 transition-colors">-</button>
-              <span id="modal-qty" class="px-3 py-1 text-xs font-light min-w-[28px] text-center">1</span>
-              <button type="button" id="modal-qty-plus" aria-label="Increase quantity" class="px-3 py-1 text-xs text-slate-dark hover:bg-neutral-100 transition-colors">+</button>
-            </div>
-          </div>
+      <!-- Shades -->
+      <div id="modal-shades" class="w-full max-w-sm mb-10 space-y-4">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-xs font-medium text-slate-dark uppercase tracking-wider">Select Shade</span>
+          <span id="modal-selected-shade-name" class="text-xs font-light text-slate-dark/80"></span>
         </div>
+        <div id="modal-shades-container" class="flex items-center justify-center space-x-3 pt-2">
+          <!-- Swatches generated dynamically -->
+        </div>
+      </div>
 
-        <button type="button" id="modal-add-btn" class="w-full py-3.5 bg-slate-dark text-white text-xs tracking-[0.2em] uppercase font-light hover:bg-slate-dark/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-soft">
-          Add to Bag
+      <!-- Quantity and Add to Cart -->
+      <div class="w-full max-w-sm flex flex-col sm:flex-row items-stretch gap-4 mb-10">
+        <div class="flex items-center border border-slate-dark/20 bg-white w-full sm:w-1/3">
+          <button type="button" id="modal-qty-minus" aria-label="Decrease quantity" class="flex-1 h-12 text-slate-dark hover:bg-neutral-50 transition-colors">-</button>
+          <span id="modal-qty" class="px-2 h-12 flex items-center justify-center text-sm font-medium w-10 text-center">1</span>
+          <button type="button" id="modal-qty-plus" aria-label="Increase quantity" class="flex-1 h-12 text-slate-dark hover:bg-neutral-50 transition-colors">+</button>
+        </div>
+        <button type="button" id="modal-add-btn" class="flex-1 h-12 bg-slate-dark text-white text-sm tracking-widest font-medium hover:bg-slate-dark/90 transition-colors focus:outline-none">
+          장바구니 담기
         </button>
       </div>
+      
+      <ul class="text-[11px] md:text-xs font-light text-slate-dark/60 flex items-center justify-center space-x-6">
+        <li class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-slate-dark/40"></span> 피부과 테스트 완료</li>
+        <li class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-slate-dark/40"></span> 전 품목 무료 배송 및 반품</li>
+      </ul>
+    </div>
+    
+    <!-- Detail Content Wrapper (1-Column Stacked) -->
+    <div class="bg-white border-t border-slate-dark/10 pt-16 md:pt-24 pb-24 md:pb-32 space-y-24 md:space-y-32">
+      
+      <!-- Section 1: Concept -->
+      <div class="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+        <h4 class="text-[10px] tracking-[0.2em] text-slate-dark/50 uppercase mb-4">Ritual of Calm</h4>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-normal text-slate-dark mb-10 leading-snug">
+          내면의 빛을 끌어올리는<br>온전한 휴식의 시간
+        </h2>
+        <div class="w-full aspect-[4/5] sm:aspect-square md:aspect-video overflow-hidden mb-10 bg-neutral-50 border border-border-subtle">
+          <img src="/images/detail_lifestyle.jpg" alt="Lifestyle" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-light text-slate-dark/80 leading-relaxed">
+          피부에 닿는 매 순간이 고요한 리추얼이 될 수 있도록, GYEOLUME는 가장 순수한 형태의 원료로 피부 본연의 투명함을 되찾아 줍니다. 부드러운 텍스처와 은은한 향이 하루의 피로를 씻어냅니다.
+        </p>
+      </div>
+
+      <!-- Section 2: Ingredients -->
+      <div class="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+        <h4 class="text-[10px] tracking-[0.2em] text-slate-dark/50 uppercase mb-4">Key Ingredients</h4>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-normal text-slate-dark mb-10 leading-snug">
+          자연에서 얻은<br>가장 순수한 에너지
+        </h2>
+        <div class="w-full aspect-square overflow-hidden bg-neutral-50 border border-border-subtle mb-10">
+          <img src="/images/detail_ingredients.jpg" alt="Key Ingredients" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-light text-slate-dark/80 leading-relaxed mb-10">
+          고요한 흙과 이슬을 머금고 자란 하동 녹차수와 맑은 수분 에너지를 품은 백련꽃 추출물이 피부 깊숙이 스며들어 메마른 결에 촘촘한 보습감을 선사합니다.
+        </p>
+        <ul class="w-full max-w-sm mx-auto text-left space-y-3 text-sm font-light text-slate-dark/70 border-t border-slate-dark/10 pt-8">
+          <li class="flex items-center gap-3"><span class="w-1 h-1 bg-slate-dark/50 rounded-full"></span> 100% 식물 유래 진정 콤플렉스</li>
+          <li class="flex items-center gap-3"><span class="w-1 h-1 bg-slate-dark/50 rounded-full"></span> 72시간 수분 지속력 임상 완료</li>
+          <li class="flex items-center gap-3"><span class="w-1 h-1 bg-slate-dark/50 rounded-full"></span> 실리콘 프리, 비건 인증 포뮬러</li>
+        </ul>
+      </div>
+
+      <!-- Section 3: Texture -->
+      <div class="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+        <h4 class="text-[10px] tracking-[0.2em] text-slate-dark/50 uppercase mb-4">Sensory Texture</h4>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-normal text-slate-dark mb-10 leading-snug">
+          피부에 녹아드는<br>숨 쉬는 텍스처
+        </h2>
+        <div class="w-full aspect-[4/5] sm:aspect-square md:aspect-[16/9] overflow-hidden bg-neutral-50 border border-border-subtle mb-10">
+          <img src="/images/detail_texture.jpg" alt="Sensory Texture" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-light text-slate-dark/80 leading-relaxed">
+          피부 굴곡을 따라 빈틈없이 밀착되며, 바르지 않은 듯 가벼운 에어리 베일이 수분 손실을 막고 외부 자극으로부터 피부를 보호합니다. 결은 살리고 답답함은 지워냈습니다.
+        </p>
+      </div>
+
+      <!-- Section 4: Ritual & Usage -->
+      <div class="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+        <h4 class="text-[10px] tracking-[0.2em] text-slate-dark/50 uppercase mb-4">How to Use</h4>
+        <h2 class="font-serif-title text-2xl md:text-3xl font-normal text-slate-dark mb-10 leading-snug">아침과 저녁의 리추얼</h2>
+        <div class="w-full aspect-square overflow-hidden bg-neutral-50 border border-border-subtle mb-10">
+          <img src="/images/detail_ritual.jpg" alt="Ritual" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full text-left bg-neutral-50 p-8 md:p-12 border border-slate-dark/5">
+          <div class="mb-8">
+            <h5 class="text-sm font-medium text-slate-dark mb-2">01. 준비</h5>
+            <p class="text-sm font-light text-slate-dark/80 leading-relaxed">적당량을 덜어 손끝의 온기로 부드럽게 녹여줍니다. 피부 본연의 온도가 흡수를 돕습니다.</p>
+          </div>
+          <div>
+            <h5 class="text-sm font-medium text-slate-dark mb-2">02. 리추얼</h5>
+            <p class="text-sm font-light text-slate-dark/80 leading-relaxed">얼굴 안쪽에서 바깥쪽으로 부드럽게 펴 바른 후, 손바닥으로 지그시 눌러 깊숙이 흡수시킵니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shade Comparison Section (Dynamic) -->
+      <div id="modal-shade-comparison-section" class="max-w-3xl mx-auto px-6 hidden">
+        <div class="border-t border-slate-dark/10 pt-16 flex flex-col items-center text-center">
+          <h4 class="text-[10px] tracking-[0.2em] text-slate-dark/50 uppercase mb-4">Color Palette</h4>
+          <h2 class="font-serif-title text-2xl md:text-3xl font-normal text-slate-dark mb-10 leading-snug">Shade Guide</h2>
+          <div class="w-full aspect-square md:aspect-[4/3] overflow-hidden border border-border-subtle bg-neutral-50">
+            <img id="modal-shade-comparison-img" src="/images/shade_comparison.jpg" alt="Shade Comparison" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -619,7 +801,7 @@
     const productData = [
       {
         id: 'p1',
-        name: 'Dew Texture Essence',
+        name: 'GYEOLUME Dew Texture Essence',
         category: 'skin',
         price: 42000,
         tagline: '결 사이를 촘촘하게 채우는 고보습 투명 에센스',
@@ -630,7 +812,7 @@
       },
       {
         id: 'p2',
-        name: 'Pore Silk Barrier Cream',
+        name: 'GYEOLUME Silk Barrier Cream',
         category: 'skin',
         price: 48000,
         tagline: '매끄러운 실크 장벽을 형성하는 저자극 결 크림',
@@ -641,10 +823,10 @@
       },
       {
         id: 'p3',
-        name: 'Pure Calm Balancing Water',
+        name: 'GYEOLUME Balancing Water',
         category: 'skin',
         price: 36000,
-        tagline: '세안 후 첫 단계의 피부 결을 정돈하는 밸런싱 토너',
+        tagline: '세안 후 첫 단계의 피부 결을 정돈하는 GYEOLUME 밸런싱 토너',
         description: '지리산 하동 녹차수를 정제해 담아 세안 직후 민감해진 피부를 빠르게 진정시킵니다. 수분 유수분 균형을 바로잡아 다음 단계의 흡수를 부드럽게 돕습니다.',
         imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCx9LQhjntjgZtEPmnH97SIcgWApQyw2FqefMj2uoLeO3zj-l_b2pQe-6OE3m0-BpoNyPu2qEbMJzPaG6ZYQ55r3dSXPKyQGVAcIjhKca7-XNcww2YggJdBwMcgJByo6SCOa3pZMHQUsvA4OvMwnVVq_uN9CsrK2LfbApqh0ivNVGtaOQPjwdbZRZLN9gnM-QXKHaw2BdqnXLF7E8PbOLEyBOmUgqg6XYTjQ8VuM825AZjCcICoDbgO',
         shades: [],
@@ -652,7 +834,7 @@
       },
       {
         id: 'p4',
-        name: 'Lucent Radiance Drop Oil',
+        name: 'GYEOLUME Radiance Drop Oil',
         category: 'skin',
         price: 52000,
         tagline: '끈적임 없이 피부에 흡수되는 극초미세 페이셜 오일',
@@ -663,7 +845,7 @@
       },
       {
         id: 'p5',
-        name: 'Bare Sheer Skin Tint',
+        name: 'GYEOLUME Bare Skin Tint',
         category: 'glow',
         price: 39000,
         tagline: '바른 듯 안 바른 듯 투명한 결광을 입히는 스킨 틴트',
@@ -678,7 +860,7 @@
       },
       {
         id: 'p6',
-        name: 'Melting Petal Dew Balm',
+        name: 'GYEOLUME Petal Dew Balm',
         category: 'glow',
         price: 26000,
         tagline: '체온에 맑게 녹아 꽃잎 생기를 머금는 멜팅 립밤',
@@ -693,12 +875,12 @@
       },
       {
         id: 'p7',
-        name: 'Lucent Liquid Highlighter',
+        name: 'GYEOLUME Liquid Highlighter',
         category: 'glow',
         price: 32000,
         tagline: '빛을 머금은 듯 은은한 윤슬 입체감을 표현하는 하이라이터',
         description: '과도한 펄 대신 맑은 수분 빛으로 얼굴의 굴곡을 밝히는 리퀴드 하이라이터입니다. 콧등과 광대에 가볍게 얹어주면 아침 햇살 같은 투명한 결광이 살아납니다.',
-        imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuApjCzPsvVmuLPGXPyGegdAz5YIqBjfTV4s7tl32YvabjpNWZA415L5rokKRbh0LhF8GcoRdOfPOIZDr_3-5jlz6YTpGszSP0raRnbGQJ_nFQ9s0s_dhsCrbKIiqWvPPiwMr-xI_9mRC3Joe58UjqGbATPiR1IcM3qtBblF-xZNJo8py50jBOOiJOHsFXDAhqOObbfTF6YJXfN4XwafKJU-1QYEf_ALFE7gECNQ-9IYeVlhePXdaiM1',
+        imageUrl: '/images/highlighter.jpg',
         shades: [
           { name: '01 Sunlit Opal', hex: '#FFF3E3' },
           { name: '02 Rose Dew', hex: '#F9E2DA' },
@@ -708,12 +890,12 @@
       },
       {
         id: 'p8',
-        name: 'Air Veil Cushion Cheek',
+        name: 'GYEOLUME Cushion Cheek',
         category: 'glow',
         price: 28000,
         tagline: '두 뺨에 맑은 수채화 빛을 물들이는 크림 쿠션 블러셔',
         description: '두 뺨에 얇고 고르게 밀착되어 맑은 수채화처럼 투명한 혈색을 더해줍니다. 파우더 특유의 텁텁함 없이 피부 결을 맑고 깨끗하게 표현합니다.',
-        imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDoeq7leVVg1AF0JRwa0sGV4QQMsdei9RFiPCVsHBV0UtjGC3V6-ACeRbGmai80IuUtACWqFbeSPQvx8SG_tWvVBdfyWdyvRfFMyuj-M_EMdegF9-Zphcszn8oNrqpIi806Ip3-uUfYcgVpKKBzCnpUCGAeP0b0SPGaeOKw6O86yBMrjbcnn4tYRHsVTaY02q2fBT7USD47-B6h_rt-dfitM2ae5hEu-G43Xx7pHvCC4EuD_IWey_aC',
+        imageUrl: '/images/blush.jpg',
         shades: [
           { name: '01 Soft Peach', hex: '#EAA196' },
           { name: '02 Dusty Rose', hex: '#D6827B' },
@@ -837,8 +1019,8 @@
 
       // Fallback UI 삽입
       parent.innerHTML = `
-        <div class="img-fallback-box">
-          <span class="font-serif-title text-base sm:text-lg tracking-widest text-slate-700 uppercase mb-1">GYEOLUME</span>
+        <div class="img-fallback-box flex flex-col items-center justify-center w-full h-full bg-neutral-100">
+          <span class="font-serif-title text-xl sm:text-2xl tracking-[0.2em] text-slate-700 uppercase mb-2">GYEOLUME</span>
           <span class="text-[10px] tracking-wider uppercase text-slate-400">Image unavailable</span>
         </div>
       `;
@@ -868,7 +1050,7 @@
 
         return `
           <article 
-            class="product-card group flex flex-col cursor-pointer fade-up-init" 
+            class="product-card group flex flex-col cursor-pointer fade-up-init hover:shadow-premium transition-shadow duration-500 p-3 -m-3 rounded-sm" 
             data-id="${product.id}" 
             data-category="${product.category}"
             tabindex="0"
@@ -876,13 +1058,13 @@
             aria-label="${product.name} 상세 보기"
           >
             <!-- Card Image Area -->
-            <div class="relative w-full aspect-4/5 bg-neutral-200 animate-pulse border border-border-subtle overflow-hidden mb-5 flex items-center justify-center">
+            <div class="relative w-full aspect-4/5 bg-clay-light animate-pulse border border-border-subtle overflow-hidden mb-6 flex items-center justify-center rounded-sm">
               ${badgeHtml}
               <img 
                 src="${product.imageUrl}" 
                 alt="${product.name}" 
                 loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-0"
+                class="w-full h-full object-cover img-zoom-hover opacity-0 transition-opacity duration-700"
                 onload="handleImageLoad(this)"
                 onerror="handleImageError(this)"
               >
@@ -1039,10 +1221,27 @@
       modalImg.alt = product.name;
 
       // Glow 제품인 경우 셰이드 렌더링
+      const comparisonSection = document.getElementById('modal-shade-comparison-section');
+      const compImg = document.getElementById('modal-shade-comparison-img');
+
       if (product.category === 'glow' && product.shades.length > 0) {
         modalShades.classList.remove('hidden');
+        if (comparisonSection) comparisonSection.classList.remove('hidden');
         currentModalSelectedShade = product.shades[0].name;
         modalSelectedShadeName.textContent = currentModalSelectedShade;
+
+        // 제품별 색상 비교 이미지 동적 설정
+        if (compImg) {
+          if (product.id === 'p5') {
+            // 파운데이션(스킨 틴트) 색상 비교 이미지
+            compImg.src = 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=1000&q=80';
+          } else if (product.id === 'p8') {
+            // 블러셔 색상 비교 이미지
+            compImg.src = 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=1000&q=80';
+          } else {
+            compImg.src = '/images/shade_comparison.jpg';
+          }
+        }
 
         modalShadesContainer.innerHTML = product.shades.map((shade, idx) => `
           <button 
@@ -1070,12 +1269,13 @@
         });
       } else {
         modalShades.classList.add('hidden');
+        if (comparisonSection) comparisonSection.classList.add('hidden');
         currentModalSelectedShade = null;
       }
 
       // 모달 표시 & 스크롤 락
       productModal.classList.remove('hidden');
-      productModal.classList.add('flex');
+      productModal.classList.add('block');
       document.body.style.overflow = 'hidden';
 
       // 접근성 포커스 이동
@@ -1089,7 +1289,7 @@
       if (productModal.classList.contains('hidden')) return;
 
       productModal.classList.add('hidden');
-      productModal.classList.remove('flex');
+      productModal.classList.remove('block');
       document.body.style.overflow = '';
 
       if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
